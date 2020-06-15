@@ -6,6 +6,7 @@
     <td>{{cat.favoriteToy}}</td>
     <td>
       <button [routerLink]="['edit/'+cat._id]">Edit</button>
+      <button (click)="delete(cat._id)">Delete</button>
     </td>
   </tr>
 </div>

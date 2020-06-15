@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Cat} from '../../../entity/cat/cat.entity';
+import {CatService} from '../../../services/cat.service';
 
 @Component({
   selector: 'app-cat-row',
@@ -10,9 +11,17 @@ export class CatRowComponent implements OnInit {
 
   @Input() cat: Cat;
 
-  constructor() { }
+  constructor(private catService: CatService) { }
 
   ngOnInit(): void {
+  }
+
+  delete(id: string){
+    this.catService.delete(id)
+      .then((result: any) => {
+        this.catService.deletedCatEvent.emit(result.result);
+      })
+      .catch(e => console.error(e));
   }
 
 }

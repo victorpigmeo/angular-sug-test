@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {EventEmitter, Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {Cat} from '../entity/cat/cat.entity';
 import {environment} from '../../environments/environment';
 
@@ -9,6 +9,8 @@ import {environment} from '../../environments/environment';
 export class CatService {
 
   public cat: Cat;
+  public deletedCatEvent: EventEmitter<Array<string>> = new EventEmitter<Array<string>>();
+
   private catsBaseUrl = environment.serverBaseUrl + '/cats';
 
   constructor(private httpClient: HttpClient) { }
@@ -27,5 +29,9 @@ export class CatService {
 
   public findCatById(id: string): Promise<Cat>{
     return this.httpClient.get<Cat>(`${this.catsBaseUrl}/${id}`).toPromise();
+  }
+
+  public delete(id: string): Promise<any>{
+    return this.httpClient.delete(`${this.catsBaseUrl}/${id}`).toPromise();
   }
 }
