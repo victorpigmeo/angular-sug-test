@@ -1,0 +1,18 @@
+<div id="cat-list">
+  <button [routerLink]="['add']">Add cat</button>
+
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Breed</th>
+      <th>Favorite Toy</th>
+      <th>Actions</th>
+    </thead>
+
+    <tbody>
+      <app-cat-row *ngFor="let cat of catsArray" [cat]="cat"></app-cat-row>
+    </tbody>
+  </table>
+
+</div>

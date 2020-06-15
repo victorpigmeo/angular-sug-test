@@ -1,0 +1,23 @@
+<button [routerLink]="'../..'">Back</button>
+
+<form>
+  <div>
+    <input type="text" placeholder="Name" [(ngModel)]="cat.name" name="name"/>
+  </div>
+  <div>
+    <input type="number" placeholder="Age" [(ngModel)]="cat.age" name="age">
+  </div>
+  <div>
+    <input type="text" placeholder="Breed" [(ngModel)]="cat.breed" name="breed"/>
+  </div>
+  <div>
+    <input type="text" placeholder="Favorite toy" [(ngModel)]="cat.favoriteToy" name="favoriteToy"/>
+  </div>
+  <div>
+    <button (click)="save()">Save</button>
+  </div>
+  <div>
+    <p>{{message}}</p>
+  </div>
+  <div>{{cat | json}}</div>
+</form>

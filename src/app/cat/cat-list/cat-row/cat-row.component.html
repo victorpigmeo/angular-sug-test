@@ -1,0 +1,11 @@
+<div>
+  <tr>
+    <td>{{cat.name}}</td>
+    <td>{{cat.age}}</td>
+    <td>{{cat.breed}}</td>
+    <td>{{cat.favoriteToy}}</td>
+    <td>
+      <button [routerLink]="['edit/'+cat._id]">Edit</button>
+    </td>
+  </tr>
+</div>
