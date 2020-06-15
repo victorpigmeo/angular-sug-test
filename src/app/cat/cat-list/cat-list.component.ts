@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CatService} from '../../services/cat.service';
 import {Cat} from '../../entity/cat/cat.entity';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-cat-list',
@@ -10,9 +11,10 @@ import {Cat} from '../../entity/cat/cat.entity';
 export class CatListComponent implements OnInit, OnDestroy {
 
   public catsArray: Array<Cat>;
+  private catSubscription: Subscription;
 
   constructor(private catService: CatService) {
-    this.catService.deletedCatEvent.subscribe((deletedIdArray: Array<string>) => {
+    this.catSubscription = this.catService.deletedCatEvent.subscribe((deletedIdArray: Array<string>) => {
       this.catsArray = this.catsArray.filter((cat: Cat) => {
         return !deletedIdArray.includes(cat._id);
       });
@@ -28,6 +30,6 @@ export class CatListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void{
-    this.catService.deletedCatEvent.unsubscribe();
+    this.catSubscription.unsubscribe();
   }
 }
