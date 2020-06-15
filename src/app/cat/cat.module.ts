@@ -6,8 +6,8 @@ import { CatComponent } from './cat.component';
 import { CatListComponent } from './cat-list/cat-list.component';
 import { CatFormComponent } from './cat-form/cat-form.component';
 import {FormsModule} from '@angular/forms';
-import { CatRowComponent } from './cat-list/cat-row/cat-row.component';
 import {AppHighlightCatDirective} from '../directives/app-highlight-cat.directive';
+import { CatImageComponent } from './cat-image/cat-image.component';
 
 
 @NgModule({
@@ -15,8 +15,8 @@ import {AppHighlightCatDirective} from '../directives/app-highlight-cat.directiv
     CatComponent,
     CatListComponent,
     CatFormComponent,
-    CatRowComponent,
-    AppHighlightCatDirective
+    AppHighlightCatDirective,
+    CatImageComponent
   ],
   imports: [
     CommonModule,

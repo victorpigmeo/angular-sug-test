@@ -1,5 +1,5 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Cat} from '../entity/cat/cat.entity';
 import {environment} from '../../environments/environment';
 
@@ -33,5 +33,10 @@ export class CatService {
 
   public delete(id: string): Promise<any>{
     return this.httpClient.delete(`${this.catsBaseUrl}/${id}`).toPromise();
+  }
+
+  public getImage(): Promise<any>{
+    const headers = new HttpHeaders({'x-api-key': 'ff8cd301-2161-497a-9cc7-bdbfbe90c2e5'});
+    return this.httpClient.get(environment.catImageUrl, {headers}).toPromise();
   }
 }

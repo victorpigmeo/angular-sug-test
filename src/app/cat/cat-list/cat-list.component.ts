@@ -11,6 +11,7 @@ import {Subscription} from 'rxjs';
 export class CatListComponent implements OnInit, OnDestroy {
 
   public catsArray: Array<Cat>;
+  public catImagesArray: Array<string> = new Array<string>();
   private catSubscription: Subscription;
 
   constructor(private catService: CatService) {
@@ -31,5 +32,21 @@ export class CatListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void{
     this.catSubscription.unsubscribe();
+  }
+
+  delete(id: string){
+    this.catService.delete(id)
+      .then((result: any) => {
+        this.catService.deletedCatEvent.emit(result.result);
+      })
+      .catch(e => console.error(e));
+  }
+
+  generateImage(){
+    this.catService.getImage()
+      .then((imageArray: any) => {
+        this.catImagesArray.push(imageArray[0].url);
+      })
+      .catch(e => console.error(e));
   }
 }

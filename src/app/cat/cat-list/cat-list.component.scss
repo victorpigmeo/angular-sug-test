@@ -3,6 +3,13 @@
     box-shadow: 2px 2px 5px 1px;
     td{
       text-align: center;
+      width: 100px;
+
+      a{
+        color: blue;
+        cursor: pointer;
+        text-decoration: underline;
+      }
     }
   }
 }

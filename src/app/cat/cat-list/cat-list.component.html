@@ -11,8 +11,22 @@
     </thead>
 
     <tbody>
-      <app-cat-row *ngFor="let cat of catsArray" [cat]="cat"></app-cat-row>
+      <tr *ngFor="let cat of catsArray">
+        <td><a (click)="generateImage()">{{cat.name}}</a></td>
+        <td>{{cat.age}}</td>
+        <td>{{cat.breed}}</td>
+        <td>{{cat.favoriteToy}}</td>
+        <td>
+          <button [routerLink]="['edit/'+cat._id]">Edit</button>
+          <button (click)="delete(cat._id)">Delete</button>
+        </td>
+      </tr>
     </tbody>
   </table>
 
+  <div>
+    <h3>Images</h3>
+
+    <app-cat-image *ngFor="let catImage of catImagesArray" [imageUrl]="catImage"></app-cat-image>
+  </div>
 </div>
